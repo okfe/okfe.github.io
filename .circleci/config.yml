@@ -25,18 +25,14 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run: yarn install
       - run: pwd
       - run: node ./build/cli.js
-      
-      # TODO: 上传至指定项目
-      # - run: 
-
+      - run: git add .
+      - run: git commit -m "Update From Circle CI"
+      - run: git push https://$GITHUB_LOGIN:$GITHUB_PASSWORD@github.com/okfe/okfe.github.io.git
+      - run: echo 'done'
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      # - run: yarn test
