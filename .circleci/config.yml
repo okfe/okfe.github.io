@@ -28,7 +28,7 @@ jobs:
       - run: yarn install
       - run: pwd
       - run: node ./build/cli.js
-      - run: git config --global user.email "linus.wang.i77@gmail.com"
+      - run: git config --global user.email "linus.wang.i77@qq.com"
       - run: git config --global user.name "Linus Wang"
       - run: git add .
       - run: git commit -m "Update From Circle CI"
