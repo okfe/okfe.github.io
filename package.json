@@ -1,0 +1,28 @@
+{
+  "name": "weekly",
+  "version": "0.1.0",
+  "description": "okfe weekly",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "build": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okfe/weekly.git"
+  },
+  "keywords": [
+    "okfe",
+    "weekly"
+  ],
+  "author": "okfe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okfe/weekly/issues"
+  },
+  "homepage": "https://github.com/okfe/weekly#readme",
+  "dependencies": {
+    "got": "^9.6.0",
+    "markdown-it": "^8.4.2"
+  }
+}
