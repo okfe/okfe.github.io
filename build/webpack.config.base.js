@@ -26,7 +26,7 @@ const base = {
     {
       test: /\.less$/,
       use: [
-        MiniCssExtractPlugin.loader,
+        'style-loader',
         'css-loader',
         'postcss-loader',
         'less-loader'
@@ -66,12 +66,6 @@ const base = {
     ]
   },
   plugins: [
-    process.env.NODE_ENV === 'production' ?
-      new MiniCssExtractPlugin({
-        filename: 'index.css',
-        chunkFilename: '[name].css'
-      })
-      : null,
     new NunjucksWebpackPlugin({
       templates: [
         {
@@ -86,12 +80,5 @@ const base = {
     // })
   ]
 };
-
-base.plugins = base.plugins.filter((item) => {
-  if (item !== null) {
-    return item;
-  }
-  return false;
-});
 
 module.exports = base;

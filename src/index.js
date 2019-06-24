@@ -1,6 +1,6 @@
 import './style.less';
 
-const a = 100;
-document.body.innerHTML = a;
-
-
+document.addEventListener("DOMContentLoaded", () => {
+  const a = 'coming soon';
+  document.body.innerHTML = a;
+}, false);
