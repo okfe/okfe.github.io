@@ -12,7 +12,7 @@ const base = {
   output: {
     filename: 'index.js',
     chunkFilename: 'assets/[name].js',
-    path: path.resolve(__dirname, '../docs')
+    path: path.resolve(__dirname, '../')
   },
   module: {
     rules: [
@@ -26,7 +26,7 @@ const base = {
     {
       test: /\.less$/,
       use: [
-        process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+        MiniCssExtractPlugin.loader,
         'css-loader',
         'postcss-loader',
         'less-loader'
