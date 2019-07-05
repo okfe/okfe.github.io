@@ -1,6 +1,6 @@
 import './style.less';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const a = 'coming soon';
+  const a = 'Chuan test';
   document.body.innerHTML = a;
 }, false);
