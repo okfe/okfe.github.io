@@ -3,8 +3,8 @@ const md = require('markdown-it')();
 const fs = require('fs');
 const path = require('path');
 
-const labelsUrl = 'https://api.github.com/repos/okfe/weekly/labels';
-const issuesUrl = 'https://api.github.com/repos/okfe/weekly/issues';
+const labelsUrl = 'https://api.github.com/repos/VarHug/test/labels';
+const issuesUrl = 'https://api.github.com/repos/VarHug/test/issues';
 
 const distPath = path.resolve(__dirname, '../api');
 const labelsFileName = path.resolve(distPath, 'labelList.json');
