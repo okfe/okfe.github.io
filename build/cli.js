@@ -3,10 +3,9 @@ const md = require('markdown-it')();
 const fs = require('fs');
 const path = require('path');
 
-const labelsUrl = 'https://api.github.com/repos/okfe/weekly/labels';
-const issuesUrl = 'https://api.github.com/repos/okfe/weekly/issues';
+const labelsUrl = 'https://api.github.com/repos/mqyqingfeng/Blog/labels';
 
-const distPath = path.resolve(__dirname, '../api');
+const distPath = path.resolve(__dirname, '../mockdata');
 const labelsFileName = path.resolve(distPath, 'labelList.json');
 const issuesFileName = path.resolve(distPath, 'issueList.json');
 
@@ -28,10 +27,26 @@ const issuesFileName = path.resolve(distPath, 'issueList.json');
     }
   });
 
-  const issuesResult = await got(issuesUrl);
+  let comIssuesList = []
+  let flag = true;
+  let page = 1;
+  while (flag) {
+    const issuesUrl = `https://api.github.com/repos/mqyqingfeng/Blog/issues?page=${page}`;
+    const issuesResult = await got(issuesUrl);
+    const list = JSON.parse(issuesResult.body);
+    // console.log(list.length);
+    if (list.length <= 0) {
+      flag = false;
+    } else {
+      comIssuesList = [...comIssuesList, ...list];
+      page++;
+    }
+  }
+
   const issueList = [];
 
-  JSON.parse(issuesResult.body).forEach((item) => {
+  // console.log(comIssuesList.length);
+  comIssuesList.forEach((item) => {
     const labels = item.labels.map((label) => {
       return {
         id: label.id,
