@@ -5,4 +5,5 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(data);
   $('body').append('<div class="markdown-body"></div>');
   $('.markdown-body').html(`${data.data}`);
+  console.log(12);
 }, false);
