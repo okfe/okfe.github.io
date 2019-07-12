@@ -29,6 +29,7 @@ jobs:
       - run: yarn install
       - run: pwd
       - run: node ./build/cli.js
+      - run: yarn run build
       - run: git config --global user.email "linus.wang.i77@qq.com"
       - run: git config --global user.name "Linus Wang"
       - run: git checkout master
@@ -41,15 +42,15 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-workflows:
-  version: 2
-  schedule-workflow:
-    triggers: #use the triggers key to indicate a scheduled build
-      - schedule:
-          cron: "0 12 * * *" # use cron syntax to set the schedule
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - build
+# workflows:
+#   version: 2
+#   schedule-workflow:
+#     triggers: #use the triggers key to indicate a scheduled build
+#       - schedule:
+#           cron: "0 0 * * *" # use cron syntax to set the schedule
+#           filters:
+#             branches:
+#               only:
+#                 - master
+#     jobs:
+#       - build
