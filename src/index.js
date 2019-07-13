@@ -1,10 +1,29 @@
 import './style.less';
 import api from '../api';
+import Router from './router';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const a = 'test';
-  console.log(issueListJson.data);
-  document.body.innerHTML = a;
   const issueList = api.getIssueList();
-  console.log(issueList);
+
+  const viewFn = (id) => {
+    $('#app').html(api.getIssue(id));
+  }
+
+  const route = new Router();
+  route.init();
+
+  let fragments = '';
+  issueList.forEach((issue) => {
+    fragments += `<div class="issue-title" data-id=${issue.id}>${issue.title}</div>`;
+    route.route(`${issue.id}`, viewFn.bind(null, `/${issue.id}`));
+  });
+
+  route.route('/', () => {
+    $('#app').html(fragments);
+    const $issueList = $('.issue-title');
+    $issueList.on('click', (ev) => {
+      const id = $(ev.target).data('id')
+      location.hash = id;
+    });
+  });
 }, false);
