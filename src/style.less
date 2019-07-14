@@ -74,6 +74,10 @@ ul {
           justify-content: left;
           align-items: center;
 
+          i {
+            line-height: 25px;
+          }
+
           .item-pic {
             width: 25px;
             height: 25px;
@@ -82,6 +86,14 @@ ul {
           .item-text {
             font-size: 16px;
             margin-left: 15px;
+
+            &:link,
+            &:visited,
+            &:hover,
+            &:active {
+              color: #fff;
+              text-decoration: none;
+            }
           }
         }
       }
@@ -90,6 +102,11 @@ ul {
 
   main {
     margin-left: 250px;
+
+    .markdown-body {
+      box-sizing: border-box;
+      padding: 50px;
+    }
 
     .route-view {
       width: 1190px;
@@ -102,6 +119,7 @@ ul {
       border-radius: 4px;
       margin: 50px 100px;
       padding: 15px 50px;
+      min-width: 900px;
       border: 1px solid #AAA;
       box-shadow: 5px 5px 0 0 #AAA;
 
@@ -118,11 +136,20 @@ ul {
 
       &>.article-outline {
         margin-top: 15px;
+        color: rgba(0, 0, 0, .85);
       }
 
       &>.article-detail {
         color: #28555A;
         margin-top: 15px;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        i {
+          margin-left: 5px;
+        }
       }
     }
   }

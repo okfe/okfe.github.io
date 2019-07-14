@@ -1,4 +1,4 @@
-{% macro field(title, author, date) %}
+{% macro field(title, author, date, outline) %}
   <div class="article-card">
     <span class="article-title">{{title}}</span>
     <div class="article-info">
@@ -6,8 +6,10 @@
       <span class="article-date">{{date}}</span>
     </div>
     <p class="article-outline">
-      这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。
+      {{outline}}
     </p>
-    <div class="article-detail">继续阅读</div>
+    <div class="article-detail">
+      继续阅读<i class="fa fa-angle-double-right fa-lg"></i>
+    </div>
   </div>
 {% endmacro %}

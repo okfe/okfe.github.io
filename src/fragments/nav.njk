@@ -1,13 +1,16 @@
 {% set items = [
   {
-    src: 'https://img.bafang.com/cdn/assets/imgs/MjAxOTc/6EDE24A69046487D21770B44C548AE81.png',
-    title: '首页'
+    icon: 'home',
+    title: '首页',
+    href: '/'
   }, {
-    src: 'https://img.bafang.com/cdn/assets/imgs/MjAxOTc/9AB2FE1D6D28C4EEBCAC517D1719D23A.png',
-    title: '归档'
+    icon: 'folder-open',
+    title: '归档',
+    href: '/#/archive'
   }, {
-    src: 'https://img.bafang.com/cdn/assets/imgs/MjAxOTc/FFA7D1D92F7E09CDD0A72A792335E26E.png',
-    title: '关于'
+    icon: 'user',
+    title: '关于',
+    href: '/#about'
   }
 ] %}
 
@@ -20,8 +23,8 @@
     {% for item in items %}
       <li class="nav-list-item">
         <div class="item-wrap">
-          <img class="item-pic" src="{{item.src}}"/>
-          <span class="item-text">{{ item.title }}</span>
+          <i class="item-pic fa fa-{{item.icon}} fa-lg"></i>
+          <a class="item-text" href="{{item.href}}">{{ item.title }}</a>
         </div>
       </li>
     {% else %}
