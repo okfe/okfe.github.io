@@ -1,6 +1,7 @@
 html,
 body,
-ul {
+ul,
+p {
   margin: 0;
   padding: 0;
 }
@@ -11,10 +12,8 @@ ul {
   }
 }
 
-body {
+.root {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
 
   .side-bar {
     width: 250px;
@@ -89,9 +88,42 @@ body {
     }
   }
 
-  .route-view {
-    width: 1190px;
-    height: 1024px;
-    // cursor: pointer;
+  main {
+    margin-left: 250px;
+
+    .route-view {
+      width: 1190px;
+      height: 1024px;
+      // cursor: pointer;
+    }
+
+    .article-card {
+      box-sizing: border-box;
+      border-radius: 4px;
+      margin: 50px 100px;
+      padding: 15px 50px;
+      border: 1px solid #AAA;
+      box-shadow: 5px 5px 0 0 #AAA;
+
+      &>.article-title {
+        font-size: 20px;
+        color: #28555A;
+      }
+
+      &>.article-info {
+        font-size: 14px;
+        color: #757272;
+        margin-top: 15px;
+      }
+
+      &>.article-outline {
+        margin-top: 15px;
+      }
+
+      &>.article-detail {
+        color: #28555A;
+        margin-top: 15px;
+      }
+    }
   }
 }

@@ -1,6 +1,13 @@
-<div class="article-card-wrap">
-  <span></span>
-  <span></span>
-  <p></p>
-  <div></div>
-</div>
+{% macro field(title, author, date) %}
+  <div class="article-card">
+    <span class="article-title">{{title}}</span>
+    <div class="article-info">
+      <span class="article-author">{{author}}</span>
+      <span class="article-date">{{date}}</span>
+    </div>
+    <p class="article-outline">
+      这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。 这是文章内容。这是文章内容。这是文章内容。
+    </p>
+    <div class="article-detail">继续阅读</div>
+  </div>
+{% endmacro %}

@@ -11,8 +11,13 @@
     <script src="index.js"></script>
   </head>
   <body>
-    {% include "./fragments/nav.njk" %}
-    {% include "./fragments/articleCard.njk" %}
-    {# {% include "./fragments/routeview.njk" %} #}
+    <div class="root">
+      {% include "./fragments/nav.njk" %}
+      <main>
+        {% import "./fragments/articleCard.njk" as forms %}
+        {{forms.field(title="题目Test2",author='作者Test2', date='日期Test2')}}
+        {# {% include "./fragments/routeview.njk" %} #}
+      </main>
+    </div>
   </body>
 </html>
