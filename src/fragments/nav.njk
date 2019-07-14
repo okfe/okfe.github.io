@@ -1,9 +1,34 @@
-<div class="side-bar">
-  <section class="logo">
-    <img class="logo-pic" src="https://img.bafang.com/cdn/assets/imgs/MjAxOTc/83EE9A71AD9FDC5AAD5A37C3199E743E.png" />
+{% set items = [
+  {
+    src: 'https://img.bafang.com/cdn/assets/imgs/MjAxOTc/6EDE24A69046487D21770B44C548AE81.png',
+    title: '首页'
+  }, {
+    src: 'https://img.bafang.com/cdn/assets/imgs/MjAxOTc/9AB2FE1D6D28C4EEBCAC517D1719D23A.png',
+    title: '归档'
+  }, {
+    src: 'https://img.bafang.com/cdn/assets/imgs/MjAxOTc/FFA7D1D92F7E09CDD0A72A792335E26E.png',
+    title: '关于'
+  }
+] %}
+
+<section class="side-bar">
+  <div class="logo">
+    {# <img class="logo-pic" src="https://img.bafang.com/cdn/assets/imgs/MjAxOTc/83EE9A71AD9FDC5AAD5A37C3199E743E.png"/> #}
     <span class="logo-name">OKFE.Club</span>
-  </section>
-  <section class="function-items">
+  </div>
+  <ul class="nav-list">
+    {% for item in items %}
+      <li class="nav-list-item">
+        <div class="item-wrap">
+          <img class="item-pic" src="{{item.src}}"/>
+          <span class="item-text">{{ item.title }}</span>
+        </div>
+      </li>
+    {% else %}
+      <li>This would display if the 'item' collection were empty</li>
+    {% endfor %}
+  </ul>
+  {# <section class="function-items">
     <div class="home-page item">
       <img class="item-pic" src="https://img.bafang.com/cdn/assets/imgs/MjAxOTc/6EDE24A69046487D21770B44C548AE81.png">
       <span class="item-text">首页</span>
@@ -24,5 +49,5 @@
       <img class="item-pic" src="https://img.bafang.com/cdn/assets/imgs/MjAxOTc/B47255C1575AEBAFD69308C1C2E0F3A1.png">
       <span class="item-text">友链</span>
     </div>
-  </section>
-</div>
+  </section> #}
+</section>
