@@ -2,7 +2,72 @@ html, body {
   margin: 0;
   padding: 0;
 }
-.issue-title {
-  margin: 20px 0;
-  cursor: pointer;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .side-bar {
+    width: 250px;
+    height: 1024px;
+    background: rgba(32, 32, 32, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .logo-pic {
+        width: 140px;
+        height: 140px;
+        margin-top: 40px;
+        border-radius: 70px;
+      }
+
+      .logo-name {
+        color: rgba(153, 153, 153, 1);
+        font-size: 18px;
+        margin-top: 10px;
+      }
+    }
+
+    .function-items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: 45px;
+
+      .item {
+        width: 100%;
+        height: 45px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        .item-pic {
+          width: 25px;
+          height: 25px;
+          margin: 0 20px 0 30px;
+        }
+
+        .item-text {
+          color: rgba(153, 153, 153, 1);
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .route-view {
+    width: 1190px;
+    height: 1024px;
+    cursor: pointer;
+  }
 }

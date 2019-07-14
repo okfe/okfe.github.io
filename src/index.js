@@ -30,4 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
       location.hash = id;
     });
   });
+  
 }, false);
