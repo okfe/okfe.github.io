@@ -46,4 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  route.route('/archive', () => {
+    $('#app').html('<div class="markdown-body">敬请期待!!!</div>');
+  });
+
+  route.route('/about', () => {
+    $('#app').html('<div class="markdown-body">敬请期待!!!</div>');
+  });
+
+
 }, false);
