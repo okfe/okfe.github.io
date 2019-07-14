@@ -6,7 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const issueList = api.getIssueList();
 
   const viewFn = (id) => {
-    $('#app').html(api.getIssue(id));
+    $('#app').html(
+      `<article class="markdown-body">
+        ${api.getIssue(id)}
+      </article>`
+    );
   }
 
   const route = new Router();

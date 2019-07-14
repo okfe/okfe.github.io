@@ -47,7 +47,7 @@ workflows:
   schedule-workflow:
     triggers: #use the triggers key to indicate a scheduled build
       - schedule:
-          cron: "0 * * * *" # use cron syntax to set the schedule
+          cron: "0 12 * * *" # use cron syntax to set the schedule
           filters:
             branches:
               only:
