@@ -13,9 +13,10 @@ export default {
       const data = issueListJson.data;
       data.map((res) => {
         res.time = moment(res.updated_at).format('YYYY年M月');
-      const classify = res.updated_at.match('^[0-9]\\S{1,6}');
-      res.belong = new Date(classify).getTime();
-      res.updated_at = res.updated_at.match('^[0-9]\\S{1,9}');
+        res.created_at =  moment(res.updated_at).format('YYYY年M月D日 HH:MM');
+        const classify = res.updated_at.match('^[0-9]\\S{1,6}');
+        res.belong = new Date(classify).getTime();
+        res.updated_at = res.updated_at.match('^[0-9]\\S{1,9}');
     });
       return data;
     }
