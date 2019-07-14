@@ -1,9 +1,11 @@
 import './style.less';
 import api from '../api';
 import Router from './router';
+import './classify.less';
 
 document.addEventListener("DOMContentLoaded", () => {
   const issueList = api.getIssueList();
+  const issues = issueList;
 
   const viewFn = (id) => {
     $('#app').html(
@@ -46,8 +48,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  let classify = '<div class="classify-title">归档</div>';
+  let lastBelong = '';
+  issues.forEach((res) => {
+    if (res.belong !== lastBelong)
+    {
+      classify += `<div class='issue-classify'>${res.time}</div>`;
+    }
+    classify += `<div class="issue-items" data-id=${res.id}>
+                    <div class="issue-title">·&nbsp; ${res.title}</div>
+                    <div class="issue-time">${res.updated_at}</div>
+                  </div>`;
+    lastBelong = res.belong;
+    route.route(`${res.id}`, viewFn.bind(null, `/${res.id}`));
+  });
+
+
   route.route('/archive', () => {
-    $('#app').html('<div class="markdown-body">敬请期待!!!</div>');
+    $('#app').html(classify);
+    const $issues = $('.issue-items');
+    $issues.on('click', (ev) => {
+      const id = $(ev.target).data('id')
+      location.hash = id;
+    });
   });
 
   route.route('/about', () => {

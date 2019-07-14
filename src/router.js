@@ -10,6 +10,7 @@ class Router {
 
   refresh() {
     this.currentUrl = location.hash.slice(1) || '/';
+    const url = this.currentUrl !== undefined ? this.currentUrl : '/';
     this.routes[this.currentUrl]();
   }
 

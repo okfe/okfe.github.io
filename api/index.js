@@ -1,3 +1,4 @@
+import moment from 'moment';
 import issueListJson from '../data/issueList.json';
 
 const ERR_OK = 0;
@@ -9,7 +10,14 @@ export default {
    */
   getIssueList() {
     if (issueListJson.code === ERR_OK) {
-      return issueListJson.data;
+      const data = issueListJson.data;
+      data.map((res) => {
+        res.time = moment(res.updated_at).format('YYYY年M月');
+      const classify = res.updated_at.match('^[0-9]\\S{1,6}');
+      res.belong = new Date(classify).getTime();
+      res.updated_at = res.updated_at.match('^[0-9]\\S{1,9}');
+    });
+      return data;
     }
     return [];
   },

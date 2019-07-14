@@ -25,7 +25,8 @@
   "dependencies": {
     "got": "^9.6.0",
     "i": "^0.3.6",
-    "markdown-it": "^8.4.2"
+    "markdown-it": "^8.4.2",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
