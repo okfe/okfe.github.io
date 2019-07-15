@@ -60,9 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="issue-time">${res.updated_at}</div>
                   </div>`;
     lastBelong = res.belong;
-    route.route(`${res.id}`, viewFn.bind(null, `/${res.id}`));
   });
-
 
   route.route('/archive', () => {
     $('#app').html(classify);
@@ -76,6 +74,5 @@ document.addEventListener("DOMContentLoaded", () => {
   route.route('/about', () => {
     $('#app').html('<div class="markdown-body">敬请期待!!!</div>');
   });
-
 
 }, false);
