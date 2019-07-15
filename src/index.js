@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $('#app').html(fragments);
     const $issueList = $('.article-detail');
     $issueList.on('click', (ev) => {
-      const id = $(ev.target).data('id')
+      const id = $(ev.target).data('id');
       location.hash = id;
     });
   });
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       classify += `<div class='issue-classify'>${res.time}</div>`;
     }
-    classify += `<div class="issue-items" data-id=${res.id}>
-                    <div class="issue-title">·&nbsp; ${res.title}</div>
+    classify += `<div class="issue-items">
+                    <div class="issue-title" data-id=${res.id}>·&nbsp; ${res.title}</div>
                     <div class="issue-time">${res.updated_at}</div>
                   </div>`;
     lastBelong = res.belong;
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $('#app').html(classify);
     const $issues = $('.issue-items');
     $issues.on('click', (ev) => {
-      const id = $(ev.target).data('id')
+      const id = $(ev.target).data('id');
       location.hash = id;
     });
   });
