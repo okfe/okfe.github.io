@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>OK前端俱乐部</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="OKFE">
-  <meta name="keywords" content="OKFE">
-  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
-  <script src="index.js"></script>
-</head>
-<body>
-{% include "./fragments/nav.njk" %}
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>OK前端俱乐部</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="OKFE">
+    <meta name="keywords" content="OKFE">
+    <link href="https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div class="root">
+      {% include "./fragments/nav.njk" %}
+      <main>
+        {% include "./fragments/routeview.njk" %}
+      </main>
+    </div>
+  </body>
 </html>
