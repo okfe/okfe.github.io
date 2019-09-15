@@ -5,13 +5,12 @@ import MainPage from './pages/MainPage/MainPage';
 import * as serviceWorker from './serviceWorker';
 import Router from './router';
 
-
 ReactDOM.render(
-    <div>
-        <MainPage />
-        <Router/>
-    </div>,
-    document.getElementById('root')
+  <div>
+    <MainPage />
+    <Router />
+  </div>,
+  document.getElementById('root')
 );
 
 serviceWorker.unregister();

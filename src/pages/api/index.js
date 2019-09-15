@@ -21,7 +21,7 @@ export default {
         const classify = res.updated_at.match('^[0-9]\\S{1,6}');
         res.belong = new Date(classify).getTime();
         res.updated_at = res.updated_at.match('^[0-9]\\S{1,9}');
-    });
+      });
       return data;
     }
     return [];
@@ -44,12 +44,12 @@ export default {
         },
 
       }).then(response => response.json())//解析为Promise
-          .then(data => {
-            issue = data.data;
-            return issue;
-          })
+        .then(data => {
+          issue = data.data;
+          return issue;
+        });
       return issue;
     }
     return 'issue';
   }
-}
+};
