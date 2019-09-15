@@ -1,1 +1,0 @@
-{"code":0,"data":"<p><img src=\"https://user-images.githubusercontent.com/22719329/50440261-4ad40580-0930-11e9-8115-f588109a1dac.png\" alt=\"image\">\n麻烦问一下哈 就是最后第二个例子 既然之前的上下文的context已经被pop, 为什么还能找到local相关的变量，是在创建fn context的时候父函数的context又创建了一遍么</p>\n"}

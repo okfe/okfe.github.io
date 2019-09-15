@@ -1,1 +1,0 @@
-{"code":0,"data":"<p>前段时间遇到一个问题，简化以后是这样的情况</p>\n<pre><code class=\"language-js\">function fun1(){\nconsole.log(arguments.length);  // 1\n}\nfunction fun2(){\nfun1.apply(void  0, arguments);\n}\n\nfun2('first', 'second')\n\n</code></pre>\n<p>原代码经过webpack和babel处理，已不可读，但我在chrome中断点一步步调试多次，确实如此。抱歉我的js理论基础不够，这已经超过我的认知范围。</p>\n"}

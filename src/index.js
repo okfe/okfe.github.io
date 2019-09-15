@@ -1,9 +1,17 @@
-import './style.less';
-import data from '../mockdata/248897246.json';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import MainPage from './pages/MainPage/MainPage';
+import * as serviceWorker from './serviceWorker';
+import Router from './router';
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log(data);
-  $('body').append('<div class="markdown-body"></div>');
-  $('.markdown-body').html(`${data.data}`);
-  console.log(12);
-}, false);
+
+ReactDOM.render(
+    <div>
+        <MainPage />
+        <Router/>
+    </div>,
+    document.getElementById('root')
+);
+
+serviceWorker.unregister();
