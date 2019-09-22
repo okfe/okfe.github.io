@@ -29,9 +29,9 @@ class BasicRoute extends React.Component {
       <HashRouter>
         <Switch>
           <Route exact path="/" component={ArticleCard}/>
-          <Route exact path="/main" component={ArticleCard}/>
-          <Route exact path="/archive" component={Archive}/>
-          <Route exact path="/about" component={AboutUs}/>
+          {/*<Route exact path="/main" component={ArticleCard}/>*/}
+          {/*<Route exact path="/archive" component={Archive}/>*/}
+          {/*<Route exact path="/about" component={AboutUs}/>*/}
           <Route exact path="/details/:name" component={Details}/>
         </Switch>
       </HashRouter>

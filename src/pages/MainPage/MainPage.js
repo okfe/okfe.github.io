@@ -2,7 +2,7 @@
  * @desc [文章列表展示主页面]
  */
 import React from 'react';
-import './MainPage.less';
+// import './MainPage.less';
 
 class MainPage extends React.Component {
   render() {

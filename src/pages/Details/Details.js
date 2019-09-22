@@ -13,9 +13,15 @@ class Details extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const routerId = this.props.match.params.name;
     this.res = this.getIssue(routerId);
+  }
+
+  escapeHTMLString(str) {
+    str = str.replace(/</g,'&lt;');
+    str = str.replace(/>/g,'&gt;');
+    return str;
   }
 
   getIssue(id) {
@@ -39,9 +45,10 @@ class Details extends React.Component {
   }
 
   render() {
+    console.log(this.escapeHTMLString(this.state.item))
     return (
       <div style={{ display: this.props.isShow }}>
-        <div dangerouslySetInnerHTML = {{ __html: this.state.item }}></div>,
+        <div dangerouslySetInnerHTML = {{ __html: this.state.item }} />
       </div>
     );
   }

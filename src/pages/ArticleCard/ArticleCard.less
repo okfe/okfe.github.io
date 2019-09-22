@@ -1,40 +1,41 @@
+.issue-card {
+  cursor: pointer;
+  width: 300px;
+  height: 173px;
+  flex-shrink: 0;
+  margin-right: 24px;
+  margin-bottom: 24px;
+  transform: scale(1);
+  transition: .3s;
+  box-shadow: none;
 
-  .article-card {
-    box-sizing: border-box;
-    border-radius: 4px;
-    margin: 50px 100px;
-    padding: 15px 50px;
-    min-width: 900px;
-    border: 1px solid #AAA;
-    box-shadow: 5px 5px 0 0 #AAA;
+  &:hover {
+    transform: scale(1.01);
+    transition: .3s;
+    box-shadow: 0 2px 8px rgba(4,20,39,0.09);
 
-    &>.article-title {
-      font-size: 20px;
-      color: #28555A;
-    }
-
-    &>.article-info {
-      font-size: 14px;
-      color: #757272;
-      margin-top: 15px;
-    }
-
-    &>.article-outline {
-      margin-top: 15px;
-      color: rgba(0, 0, 0, .85);
-    }
-
-    &>.article-detail {
-      color: #28555A;
-      margin-top: 15px;
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      i {
-        margin-left: 5px;
-      }
+    .ant-card-head-title {
+      color: #1780ff;
     }
   }
+
+  .issue-time {
+    text-align: left;
+    padding-left: 12px;
+
+    &:hover {
+      color: rgba(0,0,0,.45);
+    }
+  }
+
+  .card-desc {
+    height: 4.5em;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
 

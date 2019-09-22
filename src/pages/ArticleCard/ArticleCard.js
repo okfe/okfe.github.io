@@ -4,38 +4,71 @@
 import React from 'react';
 import './ArticleCard.less';
 import api from '../api/index';
+import { Card } from 'antd';
 
 const issueList = api.getIssueList();
 class ArticleCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      contentList: [],
+    };
+  }
+
+  componentDidMount() {
+    console.log(this.getIssue(issueList[0].id))
+  }
+
+  getIssue(id) {
+    if (id) {
+      let issue = '';
+      const contentList = [];
+      fetch(`./data/${id}.json`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        }
+
+      }).then(response => response.json())// 解析为Promise
+          .then(data => {
+            issue = data.data;
+            this.setState({
+              item: issue
+            });
+          });
+    }
   }
 
   render() {
     return (
-      <header className="App-header">
-        {
-          issueList.map(function(issue, index) {
-            return (
-              <div key={index}>
-                <div className="article-card">
-                  <span className="article-title">{issue.title}</span>
-                  <div className="article-info">
-                    <span className="article-author">{issue.author || '暂无作者信息'}</span>
-                    <span className="article-date">{issue.created_at}</span>
-                  </div>
-                  <p className="article-outline"> {issue.outline || '暂无文章缩略信息'} </p>
-                  <div className="article-detail">
-                    <a className="article-detail" href= {`/#/details/${issue.id}`}>继续阅读</a>
-                    <i className="fa fa-angle-double-right fa-lg"></i>
-                  </div>
-                </div>
-              </div>
-            );
-          })
-        }
-      </header>
+        <React.Fragment>
+          {
+            issueList.map(function(issue, index) {
+              return (
+                  <Card
+                      key={index}
+                      className="issue-card"
+                      size="small"
+                      title={issue.title}
+                      // extra={<a href="#">详情</a>}
+                      style={{ width: 300 }}
+                      actions={[
+                        <div className='issue-time'>发布于：{issue.created_at}</div>
+                      ]}
+                      onClick={() => {
+                        window.location.href = `/#/details/${issue.id}`
+                      }}
+                  >
+                    <div className="card-desc">
+                      {issue.outline || '文章内容加载失败'}
+                    </div>
+                  </Card>
+
+              );
+            })
+          }
+        </React.Fragment>
     );
   }
 }

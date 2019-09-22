@@ -31,7 +31,6 @@ export default {
    * @param {Number} id
    * @returns {String} issueBody
    */
-
   getIssue(id) {
     if (id) {
       let issue = '';
@@ -44,10 +43,10 @@ export default {
         },
 
       }).then(response => response.json())//解析为Promise
-        .then(data => {
-          issue = data.data;
-          return issue;
-        });
+          .then(data => {
+            issue = data.data;
+            return issue;
+          });
       return issue;
     }
     return 'issue';
