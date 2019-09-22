@@ -2,7 +2,7 @@
  * @desc [关于我们]
  */
 import React from 'react';
-import './AboutUs.less';
+import './index.less';
 
 class AboutUs extends React.Component{
   render(){

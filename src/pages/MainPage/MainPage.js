@@ -4,6 +4,7 @@
 import React from 'react';
 import './MainPage.less';
 
+
 class MainPage extends React.Component {
   render() {
     return (
