@@ -15,12 +15,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <Layout hasSider collapsible>
-        <Sider theme="light">
+      <Layout hasSider>
+        <Sider
+          theme="light"
+          style={{
+            width: 200,
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            left: 0,
+          }}
+        >
           <LeftMenu title="OKFE" menuList={menuList} />
         </Sider>
-        <Layout>
-          <Content>
+        <Layout style={{ marginLeft: 200 }}>
+          <Content
+            style={{ margin: '24px 16px 0', overflow: 'initial' }}
+          >
             {this.props.children}
           </Content>
           <Footer>&copy;okfe.club</Footer>

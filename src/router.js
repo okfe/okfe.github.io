@@ -4,7 +4,7 @@ import App from './App';
 import Archive from './pages/Archive/Archive';
 import AboutUs from './pages/AboutUs';
 import Details from './pages/Details/Details';
-import ArticleCard from './pages/ArticleCard';
+import ArticleList from './pages/ArticleList';
 import issueListJson from './data/issueList.json';
 
 class BasicRoute extends React.Component {
@@ -30,7 +30,7 @@ class BasicRoute extends React.Component {
       <Router>
         <App>
           <Switch>
-            <Route exact path="/" component={ArticleCard} />
+            <Route exact path="/" component={ArticleList} />
             <Route exact path="/archive" component={Archive} />
             <Route exact path="/about" component={AboutUs} />
             <Route exact path="/details/:name" component={Details} />

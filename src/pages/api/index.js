@@ -21,6 +21,7 @@ export default {
         const classify = res.updated_at.match('^[0-9]\\S{1,6}');
         res.belong = new Date(classify).getTime();
         res.updated_at = res.updated_at.match('^[0-9]\\S{1,9}');
+        console.log(res);
       });
       return data;
     }
