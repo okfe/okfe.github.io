@@ -1,0 +1,53 @@
+.ant-layout-sider-children .logo {
+  height: 40px;
+  line-height: 40px;
+  margin: 16px;
+  padding-left: 50px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+
+  span {
+    opacity: 1;
+    transition: .3s;
+  }
+
+  img {
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    transition: .3s;
+  }
+}
+
+.ant-layout-sider-collapsed .logo {
+  background: none;
+  font-size: 0;
+
+  span {
+    opacity: 0;
+    transition: .3s;
+  }
+
+  img {
+    left: 10px;
+    transition-duration: .3s;
+  }
+}
+
+.layout-header {
+  padding-left: 40px;
+}
+
+.main-content {
+  padding: 24px;
+  background: #fff;
+  min-height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}

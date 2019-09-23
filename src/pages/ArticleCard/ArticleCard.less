@@ -1,0 +1,41 @@
+.issue-card {
+  cursor: pointer;
+  width: 300px;
+  height: 173px;
+  flex-shrink: 0;
+  margin-right: 24px;
+  margin-bottom: 24px;
+  transform: scale(1);
+  transition: .3s;
+  box-shadow: none;
+
+  &:hover {
+    transform: scale(1.01);
+    transition: .3s;
+    box-shadow: 0 2px 8px rgba(4,20,39,0.09);
+
+    .ant-card-head-title {
+      color: #1780ff;
+    }
+  }
+
+  .issue-time {
+    text-align: left;
+    padding-left: 12px;
+
+    &:hover {
+      color: rgba(0,0,0,.45);
+    }
+  }
+
+  .card-desc {
+    height: 4.5em;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+
