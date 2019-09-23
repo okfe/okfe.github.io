@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import Router from '../../router';
 import './layout.less';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -11,8 +12,15 @@ class MainLayout extends React.Component {
 
         this.state = {
             collapsed: false,
-            breadcrumb: '',
+            breadcrumbList: [{
+                index: 1,
+                text: '首页',
+            }],
         };
+    }
+
+    componentDidMount() {
+        this.switchBreadcrumb();
     }
 
     onCollapse = collapsed => {
@@ -26,13 +34,31 @@ class MainLayout extends React.Component {
     switchBreadcrumb = () => {
         const breadcrumbList = [
             {
+                index: 1,
                 text: '首页',
+                func: this.breadCrumbFunc,
+            },
+            {
+                index: 2,
+                text: '文章详情',
                 func: ''
             }
-        ]
+        ];
+        this.setState({
+            breadcrumbList
+        })
     };
 
+    setBreadCrumb = (breadcrumbList = this.state.breadcrumbList) => {
+        this.setState({
+            breadcrumbList
+        });
+    };
 
+    breadCrumbFunc = () => {
+        console.log('hello world');
+        return false;
+    };
 
     render() {
         return (
@@ -65,13 +91,23 @@ class MainLayout extends React.Component {
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
-                            <Breadcrumb.Item>
-                                文章列表
-                            </Breadcrumb.Item>
+                            {
+                                this.state.breadcrumbList.map((item) => {
+                                    return (
+                                        <Breadcrumb.Item
+                                            key={item.index}
+                                            onClick={item.func ? () => {item.func()} : null}
+                                        >
+                                            {item.text}
+                                        </Breadcrumb.Item>
+                                    )
+                                })
+                            }
                             {/*<Breadcrumb.Item>Bill</Breadcrumb.Item>*/}
                         </Breadcrumb>
                         <div className="main-content">
-                            {this.props.children}
+                            {/*{this.props.children}*/}
+                            <Router setBreadCrumb />
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>

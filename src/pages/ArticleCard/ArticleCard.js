@@ -13,10 +13,21 @@ class ArticleCard extends React.Component {
     this.state = {
       contentList: [],
     };
+
   }
 
   componentDidMount() {
-    console.log(this.getIssue(issueList[0].id))
+    const breadcrumbList = [
+      {
+        index: 1,
+        text: '首页',
+      },
+      {
+        index: 2,
+        text: '文章列表',
+      }
+    ];
+    // this.props.setB(breadcrumbList);
   }
 
   getIssue(id) {
@@ -41,6 +52,7 @@ class ArticleCard extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
         <React.Fragment>
           {

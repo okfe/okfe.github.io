@@ -16,19 +16,15 @@ class BasicRoute extends React.Component {
     // const routerList = this.getIssueList();
   }
 
-  getIssueList() {
-    if (issueListJson.code === 0) {
-      const data = issueListJson.data;
-      return data;
-    }
-    return [];
+  test = () => {
+    console.log('test')
   }
 
   render() {
     return (
       <HashRouter>
         <Switch>
-          <Route exact path="/" component={ArticleCard}/>
+          <Route exact test path="/" component={ArticleCard}/>
           {/*<Route exact path="/main" component={ArticleCard}/>*/}
           {/*<Route exact path="/archive" component={Archive}/>*/}
           {/*<Route exact path="/about" component={AboutUs}/>*/}
