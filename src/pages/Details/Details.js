@@ -21,7 +21,7 @@ class Details extends React.Component {
   getIssue(id) {
     if (id) {
       let issue = '';
-      fetch(`./data/${id}.json`, {
+      fetch(`../../data/${id}.json`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
