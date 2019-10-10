@@ -30,6 +30,7 @@ jobs:
       - run: pwd
       - run: node ./build/cli.js
       - run: yarn run build
+      - run: yarn run deploy
       - run: git config --global user.email "linus.wang.i77@qq.com"
       - run: git config --global user.name "Linus Wang"
       - run: git checkout master
