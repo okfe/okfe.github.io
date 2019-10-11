@@ -52,6 +52,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - source
     jobs:
       - build
