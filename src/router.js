@@ -5,24 +5,11 @@ import Archive from './pages/Archive/Archive';
 import AboutUs from './pages/AboutUs';
 import Details from './pages/Details/Details';
 import ArticleList from './pages/ArticleList';
-import issueListJson from './data/issueList.json';
 
 class BasicRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-  }
-
-  componentDidMount() {
-    // const routerList = this.getIssueList();
-  }
-
-  getIssueList() {
-    if (issueListJson.code === 0) {
-      const data = issueListJson.data;
-      return data;
-    }
-    return [];
   }
 
   render() {

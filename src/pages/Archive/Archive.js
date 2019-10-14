@@ -21,18 +21,6 @@ class Archive extends React.Component {
     this.setState({
       ArticleList: result
     });
-    // let classify = '<div class="classify-title">归档</div>';
-    // let lastBelong = '';
-    // this.state.ArticleList.forEach((res) => {
-    //   if (res.belong !== lastBelong) {
-    //     classify += `<div class='issue-classify'>${res.time}</div>`;
-    //   }
-    //   classify += `<div class="issue-items">
-    //                 <div class="issue-title" data-id=${res.id}>·&nbsp; ${res.title}</div>
-    //                 <div class="issue-time">${res.updated_at}</div>
-    //               </div>`;
-    //   lastBelong = res.belong;
-    // });
   }
 
   getIssueList() {
@@ -61,13 +49,6 @@ class Archive extends React.Component {
               <div key={key}>
                 {
                   res.belong !== lastBelong ? <div className='issue-classify'>${res.time}</div> : ''
-                }
-                {
-                //     <div style={{ display: 'none' }}>
-                //   {
-                //     lastBelong !== res.belong ? lastBelong = res.belong : ''
-                //   }
-                // </div>
                 }
                 <div className="issue-items">
                   <a className="issue-title" href= {`/details/${res.id}`}>·&nbsp; {res.title}</a>
