@@ -1,50 +1,51 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
+import MenuMap from '_src/constants/menu';
 import './index.less';
 
 const { Item } = Menu;
 
-class App extends React.Component {
+class LeftMenu extends React.Component {
   state = {
     collapsed: false,
-    currentSelectKey: ''
+    currentPath: '/'
   }
 
   componentDidMount() {
-    const pathname = window.location.pathname;
-    this.updateSelectKey(pathname);
+    const {pathname} = window.location;
+
+    this.updateMenuSelectKeys(pathname);
   }
 
   // 点击菜单
   onClickMenuItem = (e) => {
     this.props.history.push(e.key);
-    this.updateSelectKey(e.key);
+    this.updateMenuSelectKeys(e.key);
   }
 
-  updateSelectKey = (key) => {
+  updateMenuSelectKeys = (path) => {
     this.setState({
-      currentSelectKey: key
+      currentPath: path
     });
   }
 
   render() {
-    const { title, menuList } = this.props;
-    const { currentSelectKey } = this.state;
+    const { currentPath } = this.state;
 
     return (
       <div className="left-menu-wrap">
-        <span className="menu-title">{title || ''}</span>
         <Menu
+          mode="inline"
+          selectedKeys={[currentPath]}
           onClick={this.onClickMenuItem}
-          selectedKeys={[currentSelectKey]}
         >
           {
-            menuList.map((item) => {
+            MenuMap.map((item) => {
               return (
                 <Item key={item.href}>
                   <Icon type={item.icon || ''} />
-                  {item.title}
+                  <span>{item.title}</span>
                 </Item>
               );
             })
@@ -54,4 +55,4 @@ class App extends React.Component {
     );
   }
 }
-export default withRouter(App);
+export default withRouter(LeftMenu);

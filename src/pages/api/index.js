@@ -21,7 +21,7 @@ export default {
         const classify = res.updated_at.match('^[0-9]\\S{1,6}');
         res.belong = new Date(classify).getTime();
         res.updated_at = res.updated_at.match('^[0-9]\\S{1,9}');
-        console.log(res);
+        // console.log(res);
       });
       return data;
     }
@@ -36,7 +36,7 @@ export default {
   getIssue(id) {
     if (id) {
       let issue = '';
-      console.log('getIssue', id); // eslint-disable-line
+      // console.log('getIssue', id); // eslint-disable-line
       fetch(`./data/${id}.json`, {
         method: "GET",
         headers: {
