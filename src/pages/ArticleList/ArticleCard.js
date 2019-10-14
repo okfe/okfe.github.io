@@ -17,7 +17,6 @@ class ArticleList extends React.Component {
             <Icon type="double-right" />
           </a>
         </div>}
-        // style={{ width: 300 }}
       >
         <div className="author">
           {author || '暂无作者信息'} {createdDate}

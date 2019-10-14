@@ -3,7 +3,9 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.js
+*.log
+/dist
+.idea/
 
 # testing
 /coverage
