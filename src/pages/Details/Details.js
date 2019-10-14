@@ -3,45 +3,32 @@
  */
 import React from 'react';
 import './Details.less';
+import { inject, observer } from 'mobx-react';
+import MD from 'markdown-it';
 
+const md = new MD();
+@inject('issuesStore')
+@observer
 class Details extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      item: ''
-    };
+  state = {
+    item: ''
   }
 
-  componentWillMount() {
-    const routerId = this.props.match.params.name;
-    this.res = this.getIssue(routerId);
-  }
+  componentDidMount() {
+    const { issuesStore } = this.props;
+    const { articleId } = this.props.match.params;
 
-  getIssue(id) {
-    if (id) {
-      let issue = '';
-      fetch(`../../data/${id}.json`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        }
-
-      }).then(response => response.json())// 解析为Promise
-        .then(data => {
-          issue = data.data;
-          this.setState({
-            item: issue
-          });
-        });
-    }
+    issuesStore.getIssueDetail(articleId);
   }
 
   render() {
+    const { issuesStore } = this.props;
+    const { issueDetail } = issuesStore;
+
     return (
       <div style={{ display: this.props.isShow }}>
-        <div dangerouslySetInnerHTML = {{ __html: this.state.item }}></div>,
+        {/* <div dangerouslySetInnerHTML={{ __html: this.state.item }}></div> */}
+        <div dangerouslySetInnerHTML={{ __html: md.render(issueDetail.body || '') }}></div>
       </div>
     );
   }

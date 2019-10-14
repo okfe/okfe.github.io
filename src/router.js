@@ -20,7 +20,7 @@ class BasicRoute extends React.Component {
             <Route exact path="/" component={ArticleList} />
             <Route exact path="/archive" component={Archive} />
             <Route exact path="/about" component={AboutUs} />
-            <Route exact path="/details/:name" component={Details} />
+            <Route exact path="/details/:articleId" component={Details} />
           </Switch>
         </App>
       </Router>

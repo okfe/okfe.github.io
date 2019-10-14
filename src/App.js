@@ -5,7 +5,8 @@ import LeftMenu from '_src/components/LeftMenu';
 
 const { Sider, Content, Footer } = Layout;
 
-class App extends React.Component {
+@withRouter
+export default class App extends React.Component {
   state = {
     collapsed: false,
   }
@@ -18,7 +19,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Layout className="app" style={{ height: '100vh' }}>
+      <Layout className="app" style={{ minHeight: '100vh' }}>
         <Sider
           theme="light"
           collapsible
@@ -44,4 +45,3 @@ class App extends React.Component {
     );
   }
 }
-export default withRouter(App);

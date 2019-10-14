@@ -2,7 +2,8 @@
 
 module.exports = {
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
+    ecmaFeatures: { legacyDecorators: true }
   },
   env: {
     browser: true,
@@ -18,6 +19,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'semi': ['error', 'always'],
     'indent': ['error', 2],
-    'space-before-function-paren': 0
+    'space-before-function-paren': 0,
+    'jsx-a11y/anchor-is-valid': 'off'
   }
 }
