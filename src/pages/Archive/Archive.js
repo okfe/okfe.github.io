@@ -70,7 +70,7 @@ class Archive extends React.Component {
                 // </div>
                 }
                 <div className="issue-items">
-                  <a className="issue-title" href= {`/#/details/${res.id}`}>·&nbsp; {res.title}</a>
+                  <a className="issue-title" href= {`/details/${res.id}`}>·&nbsp; {res.title}</a>
                   <div className="issue-time">{res.updated_at}</div>
                 </div>
               </div>
