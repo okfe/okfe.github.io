@@ -4,8 +4,7 @@
 import React from 'react';
 import './Details.less';
 import { inject, observer } from 'mobx-react';
-import ReactMarkdown from 'react-markdown';
-import CodeBlock from '_src/components/CodeBlock';
+import ReactMarkdown from '_src/components/ReactMarkdown';
 
 @inject('issuesStore')
 @observer
@@ -28,13 +27,9 @@ class Details extends React.Component {
 
     return (
       <div style={{ display: this.props.isShow }}>
-        <ReactMarkdown className={'markdown'}
-          //必须是false不然img标签渲染不出来
-          escapeHtml={false}
+        <ReactMarkdown
+          className={'markdown'}
           source={body}
-          renderers={{
-            code: CodeBlock
-          }}
         />
       </div>
     );

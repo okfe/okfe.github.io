@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Card } from 'antd';
+import { Icon } from 'antd';
 import { inject, observer } from 'mobx-react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from '_src/components/ReactMarkdown';
 import './index.less';
 import './ArticleCard.less';
 
@@ -20,41 +20,37 @@ export default class ArticleList extends React.Component {
     const { login, html_url } = author;
 
     return (
-      <Card
-        className="article-card"
-        title={
-          <div className="article-head">
+      <div className="card-wrap">
+        <div className="flex flex-align-center flex-space-between card-header">
+          <div className="title-wrap">
             <a
-              className="article-title-item article-title"
+              className="article-title"
               onClick={this.toArticle}
             >
               {title}
             </a>
             <a
-              className="article-title-item article-author"
+              className="article-author"
               href={html_url}
               target="_blank"
               rel="noopener noreferrer"
             >
               {login}
             </a>
-            <span className="article-title-item">
-              {createdDate}
-            </span>
           </div>
-        }
-      >
-        <p className="article-outline">
-          <ReactMarkdown className={'markdown'}
-            //必须是false不然img标签渲染不出来
-            escapeHtml={false}
+          <span className="article-date">
+            <Icon type="calendar" />
+            <span>{createdDate}</span>
+          </span>
+        </div>
+        <div className="card-body">
+          <ReactMarkdown
+            className={'markdown'}
             source={body}
-          // renderers={{
-          //   code: CodeBlock
-          // }}
           />
-        </p>
-      </Card>
+        </div>
+        <div className="card-footer"></div>
+      </div>
     );
   }
 }

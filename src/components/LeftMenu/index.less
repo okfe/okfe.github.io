@@ -1,14 +1,18 @@
+@import '~_src/less/variables.less';
+
 .left-menu-wrap {
   padding-top: 24px;
 
-  .ant-menu-item {
-    padding-left: 24px;
+  .ant-menu-item.ant-menu-item-active {
+      color: @theme-color;
   }
 
-  .menu-title {
-    display: flex;
-    padding-left: 24px;
-    font-size: 18px;
-    font-weight: 600;
+  .ant-menu-item.ant-menu-item-selected {
+    background-color: @theme-color-light;
+    color: @theme-color;
+
+    &::after {
+      border-right: 3px solid @theme-color;
+    }
   }
 }

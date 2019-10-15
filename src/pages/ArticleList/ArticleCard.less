@@ -1,29 +1,70 @@
-.article-card {
-  border-radius: 4px 4px 0 0;
+@import '~_src/less/variables.less';
 
-  .article-head {
-    width: 400px;
-    align-items: flex-end;
+.card-wrap {
+  height: 480px;
+  background-color: #FFF;
+  margin-bottom: 30px;
 
-    .article-title-item {
-      margin-left: 15px;
+  .card-header {
+    border-left: 5px solid #4d4d4d;
+    padding: 30px 0 15px 25px;
+    padding-left: 7.6923%;
+    padding-right: 7.6923%;
+
+    .title-wrap {
+      margin-left: 0;
+      font-weight: 300;
+      line-height: 35px;
+      font-size: 26px;
+      transition: color .3s;
+
+      a {
+        color: @theme-color;
+        font-weight: 600;
+
+        &:hover {
+          opacity: .6;
+        }
+      }
+
+      a:not(:first-child) {
+        margin-left: 15px;
+      }
+
+      .article-author {
+        font-size: 16px;
+      }
     }
 
-    .article-title {
+    .article-date {
+      align-self: flex-end;
+      color: #999;
       font-size: 18px;
+
+      .anticon {
+        margin-right: 5px;
+      }
+    }
+
+  }
+
+  .card-body {
+    height: 300px;
+    padding-left: 7.6923%;
+    padding-right: 7.6923%;
+
+    .markdown {
+      margin-top: 18px;
+      height: 190px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
-  .article-outline {
-    margin-top: 18px;
-    height: 190px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .ant-card-body {
-    height: 300px;
-
+  .card-footer {
+    bottom: 60px;
+    height: 60px;
+    border-top: 1px solid #ddd;
   }
 }
