@@ -4,9 +4,9 @@
 import React from 'react';
 import './Details.less';
 import { inject, observer } from 'mobx-react';
-import MD from 'markdown-it';
+import ReactMarkdown from 'react-markdown';
+import CodeBlock from '_src/components/CodeBlock';
 
-const md = new MD();
 @inject('issuesStore')
 @observer
 class Details extends React.Component {
@@ -24,11 +24,18 @@ class Details extends React.Component {
   render() {
     const { issuesStore } = this.props;
     const { issueDetail } = issuesStore;
+    const { body = '' } = issueDetail;
 
     return (
       <div style={{ display: this.props.isShow }}>
-        {/* <div dangerouslySetInnerHTML={{ __html: this.state.item }}></div> */}
-        <div dangerouslySetInnerHTML={{ __html: md.render(issueDetail.body || '') }}></div>
+        <ReactMarkdown className={'markdown'}
+          //必须是false不然img标签渲染不出来
+          escapeHtml={false}
+          source={body}
+          renderers={{
+            code: CodeBlock
+          }}
+        />
       </div>
     );
   }

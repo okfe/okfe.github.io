@@ -1,11 +1,14 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Card } from 'antd';
-// import moment from 'moment';
+import { inject, observer } from 'mobx-react';
+import ReactMarkdown from 'react-markdown';
 import './index.less';
 import './ArticleCard.less';
 
 @withRouter
+@inject('issuesStore')
+@observer
 export default class ArticleList extends React.Component {
   toArticle = () => {
     const { history, id } = this.props;
@@ -13,7 +16,7 @@ export default class ArticleList extends React.Component {
   }
 
   render() {
-    const { title, author, createdDate, outline } = this.props;
+    const { title, author, createdDate, body = '' } = this.props;
     const { login, html_url } = author;
 
     return (
@@ -42,7 +45,14 @@ export default class ArticleList extends React.Component {
         }
       >
         <p className="article-outline">
-          {outline || '暂无文章缩略信息'}
+          <ReactMarkdown className={'markdown'}
+            //必须是false不然img标签渲染不出来
+            escapeHtml={false}
+            source={body}
+          // renderers={{
+          //   code: CodeBlock
+          // }}
+          />
         </p>
       </Card>
     );

@@ -3,11 +3,12 @@
  */
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
+import { Spin } from 'antd';
 import ArticleCard from './ArticleCard';
 import './index.less';
-import { inject, observer } from 'mobx-react';
 
-@inject('issuesStore')
+@inject('issuesStore', 'commonStore')
 @observer
 class ArticleList extends React.Component {
 
@@ -17,26 +18,30 @@ class ArticleList extends React.Component {
   }
 
   render() {
-    const { issuesStore } = this.props;
+    const { issuesStore, commonStore } = this.props;
     const { issuesList } = issuesStore;
+    const { loadingController } = commonStore;
 
     return (
-      <div className="flex flex-column article-list-wrap">
-        {
-          issuesList.map((issue, index) => {
-            return (
-              <ArticleCard
-                key={issue.id}
-                id={issue.number}
-                title={issue.title}
-                author={issue.user}
-                createdDate={issue.created_at}
-                outline={issue.outline}
-              />
-            );
-          })
-        }
-      </div>
+      <Spin spinning={loadingController.issuesList}>
+        <div className="flex flex-column article-list-wrap">
+          {
+            issuesList.map((issue, index) => {
+              return (
+                <ArticleCard
+                  key={issue.id}
+                  id={issue.number}
+                  title={issue.title}
+                  author={issue.user}
+                  createdDate={issue.created_at}
+                  outline={issue.outline}
+                  body={issue.body}
+                />
+              );
+            })
+          }
+        </div>
+      </Spin>
     );
   }
 }

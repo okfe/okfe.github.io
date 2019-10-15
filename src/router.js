@@ -4,7 +4,7 @@ import App from './App';
 import Archive from './pages/Archive/Archive';
 import AboutUs from './pages/AboutUs';
 import Details from './pages/Details/Details';
-import ArticleList from './pages/ArticleList';
+import Home from './pages/Home';
 
 class BasicRoute extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class BasicRoute extends React.Component {
       <Router>
         <App>
           <Switch>
-            <Route exact path="/" component={ArticleList} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/archive" component={Archive} />
             <Route exact path="/about" component={AboutUs} />
             <Route exact path="/details/:articleId" component={Details} />
