@@ -1,3 +1,5 @@
+@import '~_src/less/variables.less';
+
 .app-vertical {
   .logo {
     font-size: 18px;
@@ -19,7 +21,7 @@
 }
 
 .app-horizontal {
-  background-color: #FFF;
+  // background-color: #FFF;
   padding: 0 20%;
 
   .ant-layout-header {
@@ -29,11 +31,27 @@
     justify-content: space-between;
     align-items: center;
     padding: 0;
+    // box-shadow: 0 -4px @theme-color;
+    // margin-top: 4px;
 
     .logo {
-      font-size: 18px;
+      font-size: 32px;
+      color: #333;
       font-weight: bold;
-      padding-top: 15px;
+    }
+  }
+
+  .ant-layout-content {
+    min-height: 480px;
+  }
+
+  .ant-layout-footer {
+    padding: 0 0 20px;
+
+    .anticon-github {
+      &:hover {
+        color: @theme-color;
+      }
     }
   }
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
 import Archive from './pages/Archive/Archive';
-import AboutUs from './pages/AboutUs';
-import Details from './pages/Details/Details';
+import About from './pages/About';
+import Details from './pages/Details';
 import Home from './pages/Home';
 
 class BasicRoute extends React.Component {
@@ -19,7 +19,7 @@ class BasicRoute extends React.Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/archive" component={Archive} />
-            <Route exact path="/about" component={AboutUs} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/details/:articleId" component={Details} />
           </Switch>
         </App>

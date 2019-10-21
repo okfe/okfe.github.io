@@ -6,7 +6,7 @@ const path = require('path');
 const labelsUrl = 'https://api.github.com/repos/okfe/weekly/labels';
 const issuesUrl = 'https://api.github.com/repos/okfe/weekly/issues?per_page=100';
 
-const distPath = path.resolve(__dirname, '../src/data');
+const distPath = path.resolve(__dirname, '../public/data');
 const labelsFileName = path.resolve(distPath, 'labelList.json');
 const issuesFileName = path.resolve(distPath, 'issueList.json');
 
@@ -53,7 +53,7 @@ const issuesFileName = path.resolve(distPath, 'issueList.json');
 
     fs.writeFile(path.resolve(distPath, `${item.id}.json`), JSON.stringify({
       code: 0,
-      data: md.render(item.body)
+      data: item.body
     }), (err) => {
       if (err) {
         console.log(err);

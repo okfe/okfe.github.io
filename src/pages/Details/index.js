@@ -2,11 +2,12 @@
  * @desc [文章详情页]
  */
 import React from 'react';
-import './Details.less';
 import { inject, observer } from 'mobx-react';
+import { Spin } from 'antd';
 import ReactMarkdown from '_src/components/ReactMarkdown';
+import './index.less';
 
-@inject('issuesStore')
+@inject('issuesStore', 'commonStore')
 @observer
 class Details extends React.Component {
   state = {
@@ -21,17 +22,18 @@ class Details extends React.Component {
   }
 
   render() {
-    const { issuesStore } = this.props;
-    const { issueDetail } = issuesStore;
-    const { body = '' } = issueDetail;
+    const { issuesStore, commonStore } = this.props;
+    const { issueDetail = '' } = issuesStore;
 
     return (
-      <div style={{ display: this.props.isShow }}>
-        <ReactMarkdown
-          className={'markdown'}
-          source={body}
-        />
-      </div>
+      <Spin spinning={commonStore.loadingController.issueDetail}>
+        <div className="detail-wrap">
+          <ReactMarkdown
+            className={'markdown'}
+            source={`${issueDetail}`}
+          />
+        </div>
+      </Spin>
     );
   }
 }

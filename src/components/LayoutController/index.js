@@ -49,13 +49,17 @@ export default function ({ type, children }) {
       <Header>
         <div className="logo">OKFE</div>
         <TopMenu />
-        <div className="">
+        {/* <div className="">
           <Icon type="github" />
-        </div>
+        </div> */}
       </Header>
       <Content className="main-content">
         {children}
       </Content>
+      <Footer>
+        &copy;&nbsp;okfe&nbsp;OK前端团队。
+        &nbsp;<Icon type="github" onClick={() => { }} />
+      </Footer>
     </Layout>
   );
 }

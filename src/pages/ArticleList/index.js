@@ -30,12 +30,13 @@ class ArticleList extends React.Component {
               return (
                 <ArticleCard
                   key={issue.id}
-                  id={issue.number}
+                  id={issue.id}
                   title={issue.title}
                   author={issue.user}
                   createdDate={issue.created_at}
                   outline={issue.outline}
                   body={issue.body}
+                  labels={issue.labels}
                 />
               );
             })

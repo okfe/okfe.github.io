@@ -1,6 +1,5 @@
 import { observable, action } from 'mobx';
 import request from '_src/request';
-import url from '_src/constants/url';
 import filePath from '_src/constants/filePath';
 import utils from '_src/utils';
 
@@ -10,7 +9,7 @@ export default class IssuesStore {
   }
 
   @observable issuesList = [];
-  @observable issueDetail = {};
+  @observable issueDetail = '';
 
   // 获取本地 Issues 列表
   @action async getIssuesList() {
@@ -41,8 +40,9 @@ export default class IssuesStore {
   @action async getIssueDetail(id) {
     try {
       this.rootStore.commonStore.handleLoading('issueDetail', true);
-      const result = await request(`${url.GET_ISSUE}${id}?per_page=100`);
-      this.issueDetail = result || {};
+      // const result = await request(`${url.GET_ISSUE}${id}?per_page=100`);
+      const result = await request(`${filePath.GET_ISSUE}${id}.json`);
+      this.issueDetail = result.data || {};
     } catch (error) {
       utils.globalMessage('error', error);
     } finally {

@@ -14,7 +14,6 @@ const request = async (url) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         res(data);
       })
       .catch((e) => {

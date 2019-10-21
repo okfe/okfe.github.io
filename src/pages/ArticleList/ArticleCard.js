@@ -16,12 +16,12 @@ export default class ArticleList extends React.Component {
   }
 
   render() {
-    const { title, author, createdDate, body = '' } = this.props;
+    const { title, author, createdDate, body = '', labels } = this.props;
     const { login, html_url } = author;
 
     return (
       <div className="card-wrap">
-        <div className="flex flex-align-center flex-space-between card-header">
+        <div className="card-header">
           <div className="title-wrap">
             <a
               className="article-title"
@@ -49,7 +49,27 @@ export default class ArticleList extends React.Component {
             source={body}
           />
         </div>
-        <div className="card-footer"></div>
+        <div className="card-footer">
+          <div className="flex tags-wrap">
+            {labels.length ?
+              labels.map(label => {
+                return (
+                  <div className="tag-wrap" key={label.id}>
+                    <Icon type="tag" />
+                    <span className="tag-name">{label.name}</span>
+                  </div>
+                );
+              }) :
+              (
+                <div className="tag-wrap">
+                  <Icon type="tag" />
+                  <span className="tag-name">无</span>
+                </div>
+
+              )
+            }
+          </div>
+        </div>
       </div>
     );
   }
