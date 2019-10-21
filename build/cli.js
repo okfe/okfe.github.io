@@ -39,11 +39,15 @@ const issuesFileName = path.resolve(distPath, 'issueList.json');
         color: label.color
       };
     });
+    // issueList.push({
+    //   id: item.id,
+    //   title: item.title,
+    //   created_at: item.created_at,
+    //   updated_at: item.updated_at,
+    //   labels
+    // });
     issueList.push({
-      id: item.id,
-      title: item.title,
-      created_at: item.created_at,
-      updated_at: item.updated_at,
+      ...item,
       labels
     });
 
