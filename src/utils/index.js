@@ -1,5 +1,7 @@
 import { message } from 'antd';
+import moment from 'moment';
 
+// 全局提示
 const globalMessage = (type, msg, duration) => {
   const dur = duration || 3;
   const typeMap = {
@@ -13,6 +15,15 @@ const globalMessage = (type, msg, duration) => {
   }
 };
 
+// 日期格式转换
+const dateFormat = (ISOTime, format) => {
+  const defaultFormat = 'YYYY-MM-DD HH:MM';
+  const timeStamp = Date.parse(ISOTime);
+  const UTCTime = new Date(timeStamp);
+
+  return moment(UTCTime).format(format || defaultFormat);
+};
+
 export default {
-  globalMessage
+  globalMessage, dateFormat
 };

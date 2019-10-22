@@ -3,9 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { Icon } from 'antd';
 import { inject, observer } from 'mobx-react';
 import ReactMarkdown from '_src/components/ReactMarkdown';
+import Utils from '_src/utils';
 import moment from 'moment';
 import './index.less';
 import './ArticleCard.less';
+
+const { dateFormat } = Utils;
 
 @withRouter
 @inject('issuesStore')
@@ -19,7 +22,6 @@ export default class ArticleList extends React.Component {
   render() {
     const { title, author, createdDate, body = '', labels } = this.props;
     const { login, html_url } = author;
-    const date = new Date(Date.parse(createdDate));
 
     return (
       <div className="card-wrap">
@@ -43,14 +45,15 @@ export default class ArticleList extends React.Component {
           <span className="article-date">
             <Icon type="calendar" />
             {/* <span>{createdDate}</span> */}
-            <span>{moment(date).format('YYYY-MM-DD HH:MM')}</span>
+            <span>{dateFormat(createdDate)}</span>
           </span>
         </div>
-        <div className="card-body">
-          <ReactMarkdown
+        <div className="card-body multiple-line-over-flow">
+          {/* <ReactMarkdown
             className={'markdown'}
             source={body}
-          />
+          /> */}
+          {body.replace(/[#>|]/g, '').slice(0, 250)}
         </div>
         <div className="card-footer">
           <div className="flex tags-wrap">
@@ -68,7 +71,6 @@ export default class ArticleList extends React.Component {
                   <Icon type="tag" />
                   <span className="tag-name">无</span>
                 </div>
-
               )
             }
           </div>

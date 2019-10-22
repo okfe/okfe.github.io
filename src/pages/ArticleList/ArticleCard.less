@@ -54,12 +54,10 @@
   }
 
   .card-body {
-    height: 300px;
     padding-left: 7.6923%;
     padding-right: 7.6923%;
 
     .markdown {
-      margin-top: 18px;
       height: 190px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -71,13 +69,19 @@
     bottom: 60px;
     height: 60px;
     border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-left: 7.6923%;
+    padding-right: 7.6923%;
 
     .tags-wrap {
       margin-top: 10px;
 
       .tag-wrap {
         color: @theme-color;
-        margin-left: 15px;
+
+        &:not(:first-child) {
+          margin-left: 15px;
+        }
 
         .tag-name {
           margin-left: 10px;
