@@ -57,7 +57,7 @@ export default function ({ type, children }) {
         {children}
       </Content>
       <Footer>
-        &copy;&nbsp;okfe&nbsp;OK前端团队。
+        &copy;&nbsp;OK前端团队
         &nbsp;<Icon type="github" onClick={() => { }} />
       </Footer>
     </Layout>

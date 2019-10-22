@@ -1,6 +1,7 @@
 @import '~_src/less/variables.less';
 
 .app-vertical {
+
   .logo {
     font-size: 18px;
     font-weight: bold;
@@ -9,6 +10,7 @@
 
   .main-content {
     padding: 30px;
+    background: linear-gradient(90deg, #021048, #1e38a3);
   }
 
   .copyright {
@@ -21,32 +23,39 @@
 }
 
 .app-horizontal {
-  // background-color: #FFF;
-  padding: 0 20%;
+  min-height: 100vh;
 
   .ant-layout-header {
-    background-color: transparent;
-    height: 182px;
+    // background-color: transparent;
+    // background: linear-gradient(90deg, #021048, #1e38a3);
+    background: linear-gradient(90deg, #041636, #0b2758);
+    height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0;
-    // box-shadow: 0 -4px @theme-color;
-    // margin-top: 4px;
+    padding: 0 20%;
 
     .logo {
       font-size: 32px;
-      color: #333;
+      color: #FFF;
       font-weight: bold;
     }
   }
 
   .ant-layout-content {
     min-height: 480px;
+    padding: 0 20%;
   }
 
   .ant-layout-footer {
     padding: 0 0 20px;
+    background-color: transparent;
+    // color: rgba(229, 235, 255, .56);
+    min-height: 48px;
+    padding: 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .anticon-github {
       &:hover {

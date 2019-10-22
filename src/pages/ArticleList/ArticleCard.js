@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Icon } from 'antd';
 import { inject, observer } from 'mobx-react';
 import ReactMarkdown from '_src/components/ReactMarkdown';
+import moment from 'moment';
 import './index.less';
 import './ArticleCard.less';
 
@@ -18,6 +19,7 @@ export default class ArticleList extends React.Component {
   render() {
     const { title, author, createdDate, body = '', labels } = this.props;
     const { login, html_url } = author;
+    const date = new Date(Date.parse(createdDate));
 
     return (
       <div className="card-wrap">
@@ -29,18 +31,19 @@ export default class ArticleList extends React.Component {
             >
               {title}
             </a>
-            <a
-              className="article-author"
-              href={html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {login}
-            </a>
           </div>
+          <a
+            className="article-author"
+            href={html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {login}
+          </a>
           <span className="article-date">
             <Icon type="calendar" />
-            <span>{createdDate}</span>
+            {/* <span>{createdDate}</span> */}
+            <span>{moment(date).format('YYYY-MM-DD HH:MM')}</span>
           </span>
         </div>
         <div className="card-body">
