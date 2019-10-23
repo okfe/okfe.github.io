@@ -23,7 +23,12 @@ export default class CategoryDetail extends React.Component {
         {
           cateroryIssueList.length ?
             cateroryIssueList.map(item => {
-              return <li key={item.id}>{item.title}</li>;
+              return <li
+                key={item.id}
+                onClick={() => {
+                  this.props.history.push(`/details/${item.id}`);
+                }}
+              >{item.title}</li>;
             }) :
             <span className="no-article">该分类暂无文章</span>
         }
