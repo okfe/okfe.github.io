@@ -1,1 +1,1 @@
-{"code":0,"data":"<h2>test</h2>\n<h4>test</h4>\n<pre><code>var a = 0;\n</code></pre>\n"}
+{"code":0,"data":"## test\r\n\r\n#### test\r\n\r\n```\r\nvar a = 0;\r\n```"}
