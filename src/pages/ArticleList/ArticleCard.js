@@ -2,9 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Icon } from 'antd';
 import { inject, observer } from 'mobx-react';
-import ReactMarkdown from '_src/components/ReactMarkdown';
 import Utils from '_src/utils';
-import moment from 'moment';
 import './index.less';
 import './ArticleCard.less';
 
@@ -44,16 +42,11 @@ export default class ArticleList extends React.Component {
           </a>
           <span className="article-date">
             <Icon type="calendar" />
-            {/* <span>{createdDate}</span> */}
             <span>{dateFormat(createdDate)}</span>
           </span>
         </div>
         <div className="card-body multiple-line-over-flow">
-          {/* <ReactMarkdown
-            className={'markdown'}
-            source={body}
-          /> */}
-          {body.replace(/[#>|]/g, '').slice(0, 250)}
+          {body.replace(/[#>|`]/g, '').slice(0, 250)}
         </div>
         <div className="card-footer">
           <div className="flex tags-wrap">

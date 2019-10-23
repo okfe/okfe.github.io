@@ -1,5 +1,4 @@
 const got = require('got');
-const md = require('markdown-it')();
 const fs = require('fs');
 const path = require('path');
 
@@ -9,6 +8,51 @@ const issuesUrl = 'https://api.github.com/repos/okfe/weekly/issues?per_page=100'
 const distPath = path.resolve(__dirname, '../public/data');
 const labelsFileName = path.resolve(distPath, 'labelList.json');
 const issuesFileName = path.resolve(distPath, 'issueList.json');
+const categoriesFilePath = path.resolve(distPath, 'categoryList.json');
+
+// 文章分类
+const writeCategories = async () => {
+  let categories = [];
+  const labelResponse = await got(labelsUrl);
+  const issueResponse = await got(issuesUrl);
+  const labelList = JSON.parse(labelResponse.body) || [];
+  let issueList = JSON.parse(issueResponse.body) || [];
+  issueList = issueList.map((issue) => {
+    return {
+      ...issue,
+      labels: issue.labels.map(item => item.id)
+    }
+  });
+
+  labelList.map((label) => {
+    let blogs = [];
+
+    issueList.map((issue) => {
+      if (issue.labels.includes(label.id)) {
+        blogs = [...blogs, {
+          title: issue.title,
+          id: issue.id
+        }]
+      }
+    });
+
+    categories = [
+      ...categories, {
+        ...label,
+        blogs
+      }
+    ]
+  });
+
+  fs.writeFile(categoriesFilePath, JSON.stringify({
+    code: 0,
+    data: categories
+  }), (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
 
 (async () => {
   const labelsResult = await got(labelsUrl);
@@ -39,13 +83,7 @@ const issuesFileName = path.resolve(distPath, 'issueList.json');
         color: label.color
       };
     });
-    // issueList.push({
-    //   id: item.id,
-    //   title: item.title,
-    //   created_at: item.created_at,
-    //   updated_at: item.updated_at,
-    //   labels
-    // });
+
     issueList.push({
       ...item,
       labels
@@ -69,4 +107,6 @@ const issuesFileName = path.resolve(distPath, 'issueList.json');
       console.log(err);
     }
   });
+
+  writeCategories();
 })();

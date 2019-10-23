@@ -10,10 +10,6 @@ import './index.less';
 @inject('issuesStore', 'commonStore')
 @observer
 class Details extends React.Component {
-  state = {
-    item: ''
-  }
-
   componentDidMount() {
     const { issuesStore } = this.props;
     const { articleId } = this.props.match.params;

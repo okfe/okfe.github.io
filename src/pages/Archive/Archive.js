@@ -11,14 +11,14 @@ import './Archive.less';
 class Archive extends React.Component {
   componentDidMount() {
     const { issuesStore } = this.props;
-    issuesStore.getIssuesList();
+    issuesStore.getIssueList();
   }
 
   getIssueList() {
     const { issuesStore } = this.props;
-    const { issuesList } = issuesStore;
+    const { issueList } = issuesStore;
 
-    return issuesList.map((res) => {
+    return issueList.map((res) => {
       // res.time = moment(res.updated_at[0]).format('YYYY年M月');
       // res.created_at = moment(res.updated_at[0]).format('YYYY年M月D日 HH:MM');
       // const classify = res.updated_at[0].match('^[0-9]\\S{1,6}');
@@ -32,13 +32,13 @@ class Archive extends React.Component {
 
   render() {
     const { issuesStore } = this.props;
-    const { issuesList } = issuesStore;
+    const { issueList } = issuesStore;
     const lastBelong = '';
 
     return (
       <header className="App-header">
         {
-          issuesList.map((res, key) => {
+          issueList.map((res, key) => {
             return (
               <div key={key}>
                 {

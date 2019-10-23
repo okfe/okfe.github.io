@@ -14,19 +14,19 @@ class ArticleList extends React.Component {
 
   componentDidMount() {
     const { issuesStore } = this.props;
-    issuesStore.getIssuesList();
+    issuesStore.getIssueList();
   }
 
   render() {
     const { issuesStore, commonStore } = this.props;
-    const { issuesList } = issuesStore;
+    const { issueList } = issuesStore;
     const { loadingController } = commonStore;
 
     return (
-      <Spin spinning={loadingController.issuesList}>
+      <Spin spinning={loadingController.issueList}>
         <div className="flex flex-column article-list-wrap">
           {
-            issuesList.map((issue, index) => {
+            issueList.map((issue, index) => {
               return (
                 <ArticleCard
                   key={issue.id}

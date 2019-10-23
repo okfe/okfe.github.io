@@ -8,45 +8,69 @@ export default class IssuesStore {
     this.rootStore = rootStore;
   }
 
-  @observable issuesList = [];
+  // 文章列表
+  @observable issueList = [];
+  // 文章详情
   @observable issueDetail = '';
+  // 文章分类列表
+  @observable categoryList = [];
+  // 分类下文章列表
+  @observable cateroryIssueList = [];
 
   // 获取本地 Issues 列表
-  @action async getIssuesList() {
+  @action async getIssueList() {
     try {
-      this.rootStore.commonStore.handleLoading('issuesList', true);
-      const result = await request(filePath.GET_ISSUES_LIST);
+      this.rootStore.commonStore.handleLoading('issueList', true);
+      const result = await request(filePath.GET_ISSUE_LIST);
 
-      this.issuesList = result.data || [];
+      this.issueList = result.data || [];
     } catch (error) {
       utils.globalMessage('error', error);
     } finally {
-      this.rootStore.commonStore.handleLoading('issuesList', false);
+      this.rootStore.commonStore.handleLoading('issueList', false);
     }
   }
-  // // 通过 API 获取 Issues 列表
-  // @action async getIssuesList() {
-  //   try {
-  //     this.rootStore.commonStore.handleLoading('issuesList', true);
-  //     const result = await request(url.GET_ISSUES_LIST);
-  //     this.issuesList = result || [];
-  //   } catch (error) {
-  //     utils.globalMessage('error', error);
-  //   } finally {
-  //     this.rootStore.commonStore.handleLoading('issuesList', false);
-  //   }
-  // }
 
-  @action async getIssueDetail(id) {
+  // 获取文章详情
+  @action async getIssueDetail(issueId) {
     try {
       this.rootStore.commonStore.handleLoading('issueDetail', true);
-      // const result = await request(`${url.GET_ISSUE}${id}?per_page=100`);
-      const result = await request(`${filePath.GET_ISSUE}${id}.json`);
+      const result = await request(`${filePath.GET_ISSUE}${issueId}.json`);
       this.issueDetail = result.data || {};
     } catch (error) {
       utils.globalMessage('error', error);
     } finally {
       this.rootStore.commonStore.handleLoading('issueDetail', false);
+    }
+  }
+
+  // 获取分类列表
+  @action async getCategoryList() {
+    try {
+      this.rootStore.commonStore.handleLoading('categoryList', true);
+      const result = await request(filePath.GET_CATEGORY_LIST);
+      this.categoryList = result.data || [];
+    } catch (error) {
+      utils.globalMessage('error', error);
+    } finally {
+      this.rootStore.commonStore.handleLoading('categoryList', false);
+    }
+  }
+
+  // 获取分类下文章列表
+  @action async getCateroryIssueList(categoryId) {
+    try {
+      this.rootStore.commonStore.handleLoading('categoryIssue', true);
+      const result = await request(filePath.GET_CATEGORY_LIST);
+      result.data.map(item => {
+        if (`${categoryId}` === `${item.id}`) {
+          this.cateroryIssueList = item.blogs;
+        }
+      });
+    } catch (error) {
+      utils.globalMessage('error', error);
+    } finally {
+      this.rootStore.commonStore.handleLoading('categoryIssue', false);
     }
   }
 }

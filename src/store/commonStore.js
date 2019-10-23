@@ -3,7 +3,7 @@ import { observable, action } from 'mobx';
 export default class IssuesStore {
 
   @observable loadingController = {
-    issuesList: false,
+    issueList: false,
     issueDetail: false
   };
 
